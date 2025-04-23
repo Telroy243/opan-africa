@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OPAN AFRICA - Contact</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;700&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins','Inter','Roboto Slab', sans-serif;
+      background: linear-gradient(to right, rgba(0,128,0,0.6), rgba(0,0,255,0.6));
+      color: white;
+    }
+    body.lock-scroll { overflow: hidden; }
+    .container { display: flex; min-height: 100vh; width: 100vw; }
+    .sidebar {
+      width: 100%;
+      background: #fff;
+      padding: 20px;
+      position: fixed; top: 0; left: 0; height: 100%; z-index: 1000;
+      transform: translateX(-100%); transition: transform .3s ease;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar.menu-overlay {
+      background: url('images/fond.jpeg') no-repeat center/cover;
+    }
+    .sidebar ul { list-style: none; margin-top: 60px; }
+    .sidebar li { margin-bottom: 15px; }
+    .sidebar a {
+      display: block; text-decoration: none; color: #333;
+      font-weight: bold; transition: color .2s ease;
+    }
+    .sidebar a:hover,
+    .sidebar a.active { color: #007BFF; }
+    .menu-btn {
+      position: fixed; top: 20px; left: 20px;
+      background: none; border: none; cursor: pointer; z-index: 1001;
+    }
+    .menu-btn img { width: 30px; height: 30px; }
+    .close-btn {
+      position: absolute; top: 20px; right: 20px;
+      font-size: 24px; background: none; border: none; color: black; cursor: pointer;
+    }
+    .content {
+      margin-left: 0; flex: 1; padding: 20px;
+      position: relative; transition: margin-left .3s ease;
+      height: 100vh; overflow-y: auto;
+    }
+    .content.shifted { margin-left: 100%; }
+    .logo {
+      position: absolute; top: 20px; right: 20px;
+      width: 80px; height: 80px; border-radius: 50%; overflow: hidden;
+    }
+    .logo img { width: 100%; height: 100%; object-fit: cover; }
+    .page-content {
+      margin-top: 80px; background: rgba(0,0,0,0.5);
+      padding: 20px; border-radius: 10px;
+    }
+    h2 { color: #007BFF; margin-bottom: 20px; }
+    label {
+      display: block; margin: 15px 0 5px; font-weight: bold;
+    }
+    input, textarea {
+      width: 100%; padding: 10px; border-radius: 5px;
+      border: none; margin-bottom: 15px; font-size: 16px;
+    }
+    .button-group {
+      display: flex; gap: 10px; margin-top: 15px;
+    }
+    .gmail-btn, .whatsapp-btn {
+      flex: 1; padding: 12px; font-size: 1em; font-weight: bold;
+      border: none; border-radius: 5px; cursor: pointer;
+      text-align: center; color: white; text-decoration: none;
+      display: inline-block;
+    }
+    .gmail-btn {
+      background-color: #007bff;
+    }
+    .gmail-btn:hover {
+      background-color: #0056b3;
+    }
+    .whatsapp-btn {
+      background-color: #25D366;
+    }
+    .whatsapp-btn:hover {
+      background-color: #128C7E;
+    }
+    .contact-info {
+      margin-top: 20px; text-align: center;
+    }
+    .contact-info p {
+      font-size: 1em; margin: 5px 0;
+    }
+    @media (min-width: 768px) {
+      .sidebar { width: 250px; padding: 30px; }
+      .content { max-width: 600px; margin: 0 auto; }
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-btn" aria-label="Ouvrir le menu">
+    <img src="images/menu.png" alt="Menu Icon">
+  </button>
+  <div class="container">
+    <aside class="sidebar hidden menu-overlay" id="sidebar">
+      <button class="close-btn" aria-label="Fermer le menu">&times;</button>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="actions.html">Nos Actions</a></li>
+        <li><a href="don.html">Faire un don</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="media.html">Actualités & Médias</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </aside>
+    <main class="content" id="content">
+      <div class="logo">
+        <img src="images/logo.jpg" alt="Logo OPAN AFRICA">
+      </div>
+      <section class="page-content">
+        <h2>Contactez-nous</h2>
+        <form onsubmit="return envoyerEmail(event)">
+          <label for="name">Nom complet</label>
+          <input type="text" id="name" name="name" required>
+
+          <label for="email">Votre email</label>
+          <input type="email" id="email" name="email" required>
+
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+
+          <div class="button-group">
+            <button class="gmail-btn" type="submit">Envoyer via Gmail</button>
+            <a href="https://wa.me/243815956781?text=Bonjour,%20je%20souhaite%20vous%20contacter%20via%20le%20site%20OPAN%20AFRICA%20:" class="whatsapp-btn">Envoyer via WhatsApp</a>
+          </div>
+        </form>
+
+        <div class="contact-info">
+          <p>Vous pouvez également nous contacter directement :</p>
+          <p>Email : <a href="mailto:sasazilonda89@gmail.com" style="color:#00ccff;">sasazilonda89@gmail.com</a></p>
+          <p>WhatsApp : <a href="https://wa.me/243815956781" style="color:#25D366;">+243815956781</a></p>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const body = document.body;
+
+    function openMenu() {
+      sidebar.classList.remove('hidden');
+      sidebar.classList.add('open');
+      content.classList.add('shifted');
+      body.classList.add('lock-scroll');
+    }
+    function closeMenu() {
+      sidebar.classList.add('hidden');
+      sidebar.classList.remove('open');
+      content.classList.remove('shifted');
+      body.classList.remove('lock-scroll');
+    }
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    document.addEventListener('click', e => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (sidebar.classList.contains('open')) closeMenu();
+      }
+    });
+
+    function envoyerEmail(event) {
+      event.preventDefault();
+      const nom     = document.getElementById('name').value;
+      const email   = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      const destinataire = "sasazilonda89@gmail.com";
+      const sujet       = encodeURIComponent("Message via le site OPAN AFRICA");
+      const corps       = encodeURIComponent(
+        "👤 Nom complet : " + nom + "\n" +
+        "📧 Adresse email : " + email + "\n\n" +
+        "📝 Message :\n" + message
+      );
+      window.location.href = `mailto:${destinataire}?subject=${sujet}&body=${corps}`;
+      return false;
+    }
+  </script>
+</body>
+</html>

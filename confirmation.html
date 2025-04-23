@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Confirmation de Don - OPAN AFRICA</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;700&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', 'Inter', 'Roboto Slab', sans-serif;
+      background: linear-gradient(to right, rgba(0, 128, 0, 0.6), rgba(0, 0, 255, 0.6));
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .container {
+      max-width: 700px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 40px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .logo-round {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: 0 auto 20px;
+    }
+    .logo-round img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    h1 {
+      font-size: 2em;
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 1.1em;
+      margin-bottom: 30px;
+    }
+    .btn {
+      background-color: #007BFF;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      font-size: 1em;
+      font-weight: bold;
+      text-decoration: none;
+      display: inline-block;
+      margin: 10px;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="logo-round">
+      <img src="images/logo.jpg" alt="Logo OPAN AFRICA">
+    </div>
+    <h1>Merci pour votre générosité !</h1>
+    <p>Nous avons bien reçu les informations concernant votre don. Vous pouvez maintenant finaliser l'envoi de votre message :</p>
+    <a id="envoyerBtn" href="#" class="btn">Envoyer le don par Gmail</a>
+    <a id="whatsappBtn" href="#" target="_blank" class="btn" style="background-color:#25D366">Envoyer via WhatsApp</a>
+  </div>
+
+  <script>
+    const mailto = sessionStorage.getItem('donMailto');
+    const corpsMail = decodeURIComponent(mailto?.split('body=')[1] || '');
+    const corpsWhatsApp = corpsMail.replace(/%0D%0A/g, '\n');
+
+    if (mailto) {
+      document.getElementById('envoyerBtn').href = mailto;
+      document.getElementById('whatsappBtn').href = `https://wa.me/243815956781?text=${encodeURIComponent('Bonjour, voici les informations de mon don pour OPAN-AFRICA :\n' + corpsWhatsApp)}`;
+    } else {
+      document.getElementById('envoyerBtn').innerText = "Erreur : Informations manquantes";
+      document.getElementById('envoyerBtn').style.background = "gray";
+      document.getElementById('envoyerBtn').style.cursor = "not-allowed";
+      document.getElementById('envoyerBtn').href = "#";
+
+      document.getElementById('whatsappBtn').innerText = "Informations manquantes";
+      document.getElementById('whatsappBtn').style.background = "gray";
+      document.getElementById('whatsappBtn').style.cursor = "not-allowed";
+      document.getElementById('whatsappBtn').href = "#";
+    }
+  </script>
+</body>
+</html>

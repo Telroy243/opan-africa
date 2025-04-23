@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OPAN AFRICA - Faire un Don</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;700&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Poppins', 'Inter', 'Roboto Slab', sans-serif;
+      background: linear-gradient(to right, rgba(0, 128, 0, 0.6), rgba(0, 0, 255, 0.6));
+      color: white;
+    }
+    body.lock-scroll { overflow: hidden; }
+    .container { display: flex; min-height: 100vh; width: 100vw; }
+    .sidebar {
+      width: 100%;
+      background: #ffffff;
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 1000;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sidebar.open { transform: translateX(0); }
+    .sidebar.menu-overlay {
+      background: url('images/fond.jpeg') no-repeat center/cover;
+    }
+    .sidebar ul { list-style: none; margin-top: 60px; }
+    .sidebar li { margin-bottom: 15px; }
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      display: block;
+      transition: color 0.2s ease;
+    }
+    .sidebar a:hover,
+    .sidebar a.active { color: #007BFF; }
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .menu-btn img {
+      width: 30px;
+      height: 30px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: black;
+      cursor: pointer;
+    }
+    .content {
+      margin-left: 0;
+      flex: 1;
+      padding: 20px;
+      position: relative;
+      transition: margin-left 0.3s ease;
+      height: 100vh;
+      overflow-y: auto;
+    }
+    .content.shifted { margin-left: 100%; }
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .page-content {
+      margin-top: 80px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    h2 {
+      color: #007BFF;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: bold;
+    }
+    input, select, textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .note {
+      margin-top: 30px;
+      font-size: 14px;
+      color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-btn" aria-label="Ouvrir le menu">
+    <img src="images/menu.png" alt="Menu Icon">
+  </button>
+  <div class="container">
+    <aside class="sidebar hidden menu-overlay" id="sidebar">
+      <button class="close-btn" aria-label="Fermer le menu">&times;</button>
+      <ul>
+        <li><a href="index.html">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="actions.html">Nos Actions</a></li>
+        <li><a href="don.html" class="active">Faire un don</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="media.html">Actualités & Médias</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </aside>
+    <main class="content" id="content">
+      <div class="logo"><img src="images/logo.jpg" alt="Logo OPAN AFRICA"></div>
+      <section class="page-content">
+        <h2>Faire un Don à OPAN-AFRICA</h2>
+        <form id="donForm" action="confirmation.html" method="GET" onsubmit="return prepareMailto()">
+          <label for="nom">Nom du donateur :</label>
+          <input type="text" id="nom" name="nom" required>
+          <label for="nature">Nature du don :</label>
+          <select id="nature" name="nature" required onchange="toggleDetails()">
+            <option value="">-- Choisir --</option>
+            <option value="Argent">Argent</option>
+            <option value="Matériel">Matériel</option>
+          </select>
+          <div id="argentDetails" style="display:none;">
+            <label for="montant">Montant :</label>
+            <input type="number" id="montant" name="montant">
+            <label for="devise">Devise :</label>
+            <select id="devise" name="devise">
+              <option value="USD">Dollar Américain (USD)</option>
+              <option value="CDF">Franc Congolais (CDF)</option>
+            </select>
+          </div>
+          <div id="materielDetails" style="display:none;">
+            <label for="description">Détail du matériel :</label>
+            <textarea id="description" name="description" placeholder="Type d'emballage, poids, etc."></textarea>
+            <label for="lieu">Lieu de perception :</label>
+            <input type="text" id="lieu" name="lieu">
+            <label for="date_perception">Date de perception :</label>
+            <input type="date" id="date_perception" name="date_perception">
+            <label for="percepteur">Nom du percepteur :</label>
+            <input type="text" id="percepteur" name="percepteur">
+            <label for="code">Code humanitaire du percepteur :</label>
+            <input type="text" id="code" name="code">
+          </div>
+          <button type="submit" class="btn">Faire un Don</button>
+        </form>
+        <div class="note">
+          <p><strong>Modes de transfert acceptés :</strong></p>
+          <ul>
+            <li>Orange Money : <strong>+243810404926</strong></li>
+            <li>Airtel Money : <strong>+243853772780</strong></li>
+            <li>Mpesa : <strong>+243972001951</strong></li>
+          </ul>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const sidebar = document.getElementById('sidebar');
+    const content = document.getElementById('content');
+    const body = document.body;
+    function openMenu() {
+      sidebar.classList.remove('hidden');
+      sidebar.classList.add('open');
+      content.classList.add('shifted');
+      body.classList.add('lock-scroll');
+    }
+    function closeMenu() {
+      sidebar.classList.add('hidden');
+      sidebar.classList.remove('open');
+      content.classList.remove('shifted');
+      body.classList.remove('lock-scroll');
+    }
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+    document.addEventListener('click', e => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (sidebar.classList.contains('open')) closeMenu();
+      }
+    });
+    function toggleDetails() {
+      const nature = document.getElementById('nature').value;
+      document.getElementById('argentDetails').style.display = nature === 'Argent' ? 'block' : 'none';
+      document.getElementById('materielDetails').style.display = nature === 'Matériel' ? 'block' : 'none';
+    }
+    function prepareMailto() {
+      const nom = document.getElementById('nom').value;
+      const nature = document.getElementById('nature').value;
+      let corps = `Nom du donateur : ${nom}%0D%0A`;
+      corps += `Nature du don : ${nature}%0D%0A`;
+      if(nature === 'Argent') {
+        const montant = document.getElementById('montant').value;
+        const devise = document.getElementById('devise').value;
+        corps += `Montant : ${montant} ${devise}%0D%0A`;
+      } else if(nature === 'Matériel') {
+        const description = document.getElementById('description').value;
+        const lieu = document.getElementById('lieu').value;
+        const date = document.getElementById('date_perception').value;
+        const percepteur = document.getElementById('percepteur').value;
+        const code = document.getElementById('code').value;
+        corps += `Description du matériel : ${description}%0D%0A`;
+        corps += `Lieu de perception : ${lieu}%0D%0A`;
+        corps += `Date de perception : ${date}%0D%0A`;
+        corps += `Nom du percepteur : ${percepteur}%0D%0A`;
+        corps += `Code humanitaire du percepteur : ${code}%0D%0A`;
+      }
+      sessionStorage.setItem('donMailto', `mailto:sasazilonda89@gmail.com?subject=Don%20via%20Site%20OPAN-AFRICA&body=${corps}`);
+      return true;
+    }
+  </script>
+</body>
+</html>

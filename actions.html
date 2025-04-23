@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OPAN AFRICA - Nos Actions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;700&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Poppins', 'Inter', 'Roboto Slab', sans-serif;
+      background: linear-gradient(to bottom right, rgba(0, 128, 0, 0.6), rgba(0, 0, 170, 0.6));
+      color: white;
+      overflow-x: hidden;
+    }
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .menu-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/fond.jpeg') no-repeat center center / cover;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+    .sidebar.open {
+      display: flex;
+    }
+    .close-btn {
+      align-self: flex-end;
+      font-size: 30px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .sidebar ul {
+      list-style: none;
+      margin-top: 60px;
+      padding: 0;
+    }
+    .sidebar li {
+      margin-bottom: 15px;
+    }
+    .sidebar a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #007BFF;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .page-content {
+      margin-top: 100px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      margin: 100px 20px 40px 20px;
+    }
+    h2 {
+      color: #007BFF;
+      margin-bottom: 10px;
+    }
+    p, li {
+      font-size: 16px;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      color: rgb(255, 255, 255);
+    }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 20px;
+    }
+    @media (min-width: 768px) {
+      .sidebar {
+        width: 250px;
+        padding: 30px;
+      }
+      .sidebar ul {
+        margin-top: 100px;
+      }
+      .page-content {
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-btn" aria-label="Ouvrir le menu">
+    <img src="images/menu.png" alt="Menu" class="menu-icon">
+  </button>
+  <aside class="sidebar" id="sidebar">
+    <button class="close-btn">&times;</button>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="actions.html" class="active">Nos Actions</a></li>
+      <li><a href="don.html">Faire un don</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="media.html">Actualités & Médias</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo OPAN AFRICA">
+  </div>
+  <div class="page-content">
+    <h2>Nos Actions Prioritaires</h2>
+    <p>OPAN-AFRICA agit pour la protection, l'éducation, la santé, l'autonomisation et la réinsertion socio-professionnelle des enfants orphelins, vulnérables ou non accompagnés à travers des programmes stratégiques spécifiques et durables.</p>
+    <h2>Nos Programmes Stratégiques</h2>
+    <ul>
+      <li><strong>OPAN-Ménage :</strong> Un programme PME qui forme les jeunes désoeuvrés aux métiers du nettoyage, de la décoration, du jardinage, de la restauration, tout en luttant contre l'insalubrité dans les écoles et hôpitaux.</li>
+      <li><strong>OPAN-Academia :</strong> Offre des bourses d'études, l'encadrement pour mémoires, la construction de homes universitaires et l'accès à une mutuelle de santé pour étudiants.</li>
+      <li><strong>OPAN-School :</strong> Établit des écoles maternelles et primaires au sein des centres d'accueil. Il lutte contre la déscolarisation et soutient le rattrapage pour enfants déplacés.</li>
+      <li><strong>OPAN-Hospital :</strong> Crée des centres de santé pour enfants orphelins. Il combat la mortalité infantile, traite les IST/MST et installe des mutuelles communautaires de santé.</li>
+      <li><strong>OPAN-Music & Art :</strong> Identifie et valorise les talents musicaux et artistiques des enfants, avec des centres artistiques et des ateliers animés par des professionnels du secteur.</li>
+      <li><strong>OPAN-Faim :</strong> Programme Local de Lutte contre la Faim qui soutient l'agriculture, la lutte contre les pestes, la fabrication de vaccins, et la formation des producteurs locaux.</li>
+      <li><strong>OPAN-Travel :</strong> Crée des agences de voyages pour financer les activités sociales de l'orphelinat tout en favorisant les déplacements des enfants et du personnel.</li>
+      <li><strong>OPAN-Spirituality :</strong> Travaille avec les églises pour recenser, encadrer spirituellement et socialement les enfants vulnérables. Il conçoit des plans d'action à long terme pour la protection.</li>
+    </ul>
+    <h2>Zones d’Intervention</h2>
+    <ul>
+      <li><strong>Kwango</strong> (province pilote)</li>
+      <li>Ville-province de <strong>Kinshasa</strong></li>
+      <li><strong>Équateur</strong></li>
+      <li><strong>Haut-Katanga</strong></li>
+      <li><strong>Haut-Uélé</strong></li>
+    </ul>
+    <h2>Impact Souhaité</h2>
+    <p>OPAN-AFRICA vise à transformer la condition des enfants vulnérables en leur assurant une vie digne, utile et productive, capable d'impacter positivement la société à travers des actions durables et innovantes.</p>
+  </div>
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+    });
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+    document.addEventListener('click', e => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

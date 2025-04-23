@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OPAN AFRICA - Média</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right,rgba(0, 138, 0, 0.54),rgba(0, 0, 150, 0.59));
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/fond.jpeg') no-repeat center center / cover;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      display: flex;
+    }
+
+    .close-btn {
+      align-self: flex-end;
+      font-size: 30px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 50px;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #00ccff;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page-content {
+      margin-top: 100px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      margin: 100px 20px 40px 20px;
+    }
+
+    h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .event-item {
+      margin-bottom: 30px;
+      background-color: rgba(0, 0, 0, 0.6);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .event-item h3 {
+      color: #00ccff;
+      margin-bottom: 15px;
+    }
+
+    .event-item p {
+      line-height: 1.6;
+      color: white;
+    }
+
+    .event-item img {
+      width: 100%;
+      height: auto;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bouton menu -->
+  <button class="menu-btn" aria-label="Ouvrir le menu">
+    <img src="images/menu.png" alt="Menu" class="menu-icon">
+  </button>
+
+  <!-- Menu latéral -->
+  <aside class="sidebar" id="sidebar">
+    <button class="close-btn">&times;</button>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="actions.html">Nos Actions</a></li>
+      <li><a href="don.html">Faire un don</a></li>
+      <li><a href="faq.html">FAQ</a></li>
+      <li><a href="media.html" class="active">Actualités & Média</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo OPAN AFRICA">
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="page-content">
+    <h2>Nos Activités Récentes</h2>
+
+    <!-- Activité 4 -->
+    <div class="event-item">
+      <h3>Activité de dépistage actif des orphelins et enfants vulnérables malnutris</h3>
+      <p><strong>Date:</strong> 17 mars 2025</p>
+      <p><strong>Description:</strong> Dans cette activité, des équipes médicales ont mené un dépistage actif de la malnutrition chez les orphelins et enfants vulnérables dans différentes zones ciblées, en vue de fournir des interventions nutritionnelles adaptées.</p>
+  
+      <img src="images/12.jpg" alt="Activité 2">
+      <img src="images/13.jpg" alt="Activité 3">
+    </div>
+
+    <!-- Activité 3 -->
+    <div class="event-item">
+      <h3>Activités humanitaires d'entraide sociales aux enfants vulnérables et orphelins souffrant de malnutrition aiguë</h3>
+      <p><strong>Date:</strong> 25 février 2025</p>
+      <p><strong>Description:</strong> Cette initiative visait à fournir un soutien social et médical aux enfants souffrant de malnutrition aiguë, en leur offrant des soins, de la nourriture et des programmes de soutien psychologique.</p>
+      <img src="images/21.jpg" alt="Activité 1">
+      <img src="images/22.jpg" alt="Activité 2">
+      <img src="images/23.jpg" alt="Activité 3">
+    </div>
+    
+    <!-- Activité 2 -->
+    <div class="event-item">
+      <h3>Activités de distribution des produits alimentaires pour les déplacés de Kwamouth</h3>
+      <p><strong>Date:</strong> 20 décembre 2024</p>
+      <p><strong>Description:</strong> Cette activité a consisté en la distribution de produits alimentaires essentiels aux populations déplacées de Kwamouth, afin de répondre à leurs besoins immédiats en matière de nutrition et de survie.</p>
+      <img src="images/31.jpg" alt="Activité 1">
+      <img src="images/32.jpg" alt="Activité 2">
+      
+    </div>
+    
+    <!-- Activité 1 -->
+    <div class="event-item">
+      <h3>Activités de supervision des pools Humanitaires Ciblés dans le cadre de l'assistance humanitaire des orphelins et enfants vulnérables</h3>
+      <p><strong>Date:</strong> 17 décembre 2024</p>
+      <p><strong>Description:</strong> Cette activité a impliqué la supervision de plusieurs pools humanitaires dans le but d'assurer une assistance ciblée aux orphelins et enfants vulnérables, en fournissant des ressources vitales pour leur bien-être et développement.</p>
+      <img src="images/41.jpg" alt="Activité 1">
+      <img src="images/42.jpg" alt="Activité 2">
+      <img src="images/43.jpg" alt="Activité 3">
+    </div>
+
+  </div>
+
+  <!-- JS -->
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>

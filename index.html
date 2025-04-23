@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OPAN-AFRICA - Accueil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@400;700&family=Roboto+Slab:wght@500&display=swap" rel="stylesheet">
+  <style>
+    /* ... (style identique à ton fichier d’origine, inchangé) ... */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Poppins', 'Inter', 'Roboto Slab', sans-serif;
+    }
+    body.lock-scroll {
+      overflow: hidden;
+    }
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 100%;
+      background:rgb(255, 255, 255);
+      padding: 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100%;
+      z-index: 1000;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .sidebar.open {
+      transform: translateX(0);
+    }
+    .sidebar.menu-overlay {
+      background: url('images/fond.jpeg') no-repeat center/cover;
+    }
+    .sidebar ul {
+      list-style: none;
+      margin-top: 60px;
+    }
+    .sidebar li {
+      margin-bottom: 15px;
+    }
+    .sidebar a {
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      display: block;
+      transition: color 0.2s ease;
+    }
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #007BFF;
+    }
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+    .menu-btn img {
+      width: 30px;
+      height: 30px;
+    }
+    .close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 24px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+    .content {
+      flex: 1;
+      padding: 0;
+      position: relative;
+    }
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 10;
+    }
+    .logo img {
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+    .hero {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 40px 0;
+      flex-direction: column;
+    }
+    .slider {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      white-space: nowrap;
+      z-index: 0;
+    }
+    .slide-track {
+      display: flex;
+      animation: scroll 25s linear infinite;
+    }
+    .slide {
+      height: auto;
+      max-height: 100%;
+      object-fit: contain;
+      flex-shrink: 0;
+      width: 300px;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(152, 223, 184, 0.313);
+      z-index: 1;
+    }
+    .hero-text {
+      position: relative;
+      z-index: 2;
+      color: rgb(171, 56, 2);
+      text-align: center;
+      padding: 0 20px;
+    }
+    .hero-text h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+    .hero-text p {
+      font-size: 1.2em;
+      font-weight: 400;
+    }
+    .section {
+      padding: 60px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    .section h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #007BFF;
+      font-weight: 600;
+    }
+    .section p,
+    .section ul {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #333;
+    }
+    .section ul {
+      list-style: disc;
+      padding-left: 20px;
+    }
+    .don-btn {
+      display: inline-block;
+      margin-top: 30px;
+      padding: 12px 24px;
+      background-color: #007BFF;
+      color: white;
+      font-weight: bold;
+      text-decoration: none;
+      border-radius: 8px;
+      transition: background 0.3s ease;
+    }
+    .don-btn:hover {
+      background-color: #0056b3;
+    }
+    @media (max-width: 1024px) {
+      .slide {
+        width: 180px;
+      }
+    }
+    @media (max-width: 600px) {
+      .hero {
+        padding: 60px 0;
+      }
+      .slide {
+        width: 140px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="menu-btn" aria-label="Ouvrir le menu">
+    <img src="images/menu.png" alt="Menu Icon" />
+  </button>
+
+  <div class="container">
+    <aside class="sidebar menu-overlay" id="sidebar">
+      <button class="close-btn" aria-label="Fermer le menu">&times;</button>
+      <ul>
+        <li><a href="index.html" class="active">Accueil</a></li>
+        <li><a href="about.html">À propos</a></li>
+        <li><a href="actions.html">Nos Actions</a></li>
+        <li><a href="don.html">Faire un don</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="media.html">Actualités & Médias</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </aside>
+
+    <main class="content" id="content">
+      <div class="logo"><img src="images/logo.jpg" alt="Logo OPAN-AFRICA" /></div>
+
+      <section class="hero">
+        <div class="slider">
+          <div class="slide-track">
+            <img src="images/1.png" class="slide" />
+            <img src="images/2.jpg" class="slide" />
+            <img src="images/3.jpg" class="slide" />
+            <img src="images/4.jpg" class="slide" />
+            <img src="images/5.jpg" class="slide" />
+            <img src="images/6.jpg" class="slide" />
+            <img src="images/7.jpg" class="slide" />
+            <img src="images/1.png" class="slide" />
+            <img src="images/2.jpg" class="slide" />
+            <img src="images/3.jpg" class="slide" />
+            <img src="images/4.jpg" class="slide" />
+          </div>
+        </div>
+        <div class="overlay"></div>
+        <div class="hero-text">
+          <h1>Bienvenue sur OPAN-AFRICA</h1>
+          <p>Agir pour les enfants oubliés, bâtir des vies pleines d'espoir.</p>
+        </div>
+      </section>
+
+      <section class="section">
+        <h2>Notre engagement</h2>
+        <p>
+          OPAN-AFRICA est une organisation humanitaire dédiée à la protection des orphelins, enfants vulnérables, enfants non accompagnés et mineurs en détresse. 
+          Fondée pour répondre aux conséquences des conflits interethniques, notre mission est de redonner espoir, sécurité et avenir à ceux qui n’ont plus rien.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Notre impact</h2>
+        <p>
+          Nous opérons à travers plusieurs provinces de la République Démocratique du Congo, avec une vision claire : étendre nos actions dans toute l’Afrique. 
+          OPAN-AFRICA met en place des centres d’accueil, des écoles, des services médicaux, des programmes d’autonomisation et de réinsertion socioprofessionnelle.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Notre vision</h2>
+        <p>
+          Faire de chaque enfant abandonné un acteur du changement utile à sa communauté. Nous croyons qu’aucune enfance ne doit être perdue, et que chaque vie peut rayonner.
+        </p>
+      </section>
+
+      <section class="section">
+        <h2>Ce que vous trouverez ici</h2>
+        <ul>
+          <li>📘 Des informations claires sur notre mission et nos projets.</li>
+          <li>📍 Nos zones d’action et leurs besoins spécifiques.</li>
+          <li>📊 Nos programmes d’autoprise en charge (santé, éducation, insertion).</li>
+          <li>🧡 Des moyens simples de vous engager ou de faire un don.</li>
+        </ul>
+        <a class="don-btn" href="don.html">Faire un don</a>
+      </section>
+
+      <section class="section">
+        <h2>Rejoignez-nous</h2>
+        <p>
+          Vous pouvez soutenir notre action en faisant un don, en devenant bénévole ou en partageant notre mission. Ensemble, bâtissons une Afrique où chaque enfant a sa place.
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const closeBtn = document.querySelector('.close-btn');
+    const sidebar = document.getElementById('sidebar');
+    const body = document.body;
+
+    function openMenu() {
+      sidebar.classList.add('open');
+      body.classList.add('lock-scroll');
+    }
+
+    function closeMenu() {
+      sidebar.classList.remove('open');
+      body.classList.remove('lock-scroll');
+    }
+
+    menuBtn.addEventListener('click', openMenu);
+    closeBtn.addEventListener('click', closeMenu);
+
+    document.addEventListener('click', e => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        if (sidebar.classList.contains('open')) closeMenu();
+      }
+    });
+  </script>
+</body>
+</html>

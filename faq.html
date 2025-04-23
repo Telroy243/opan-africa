@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>OPAN AFRICA - FAQ</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom right, #007f00, #0000aa);
+      color: white;
+      overflow-x: hidden;
+    }
+
+    .menu-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .menu-icon {
+      width: 30px;
+      height: 30px;
+      object-fit: contain;
+    }
+
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('images/fond.jpeg') no-repeat center center / cover;
+      padding: 20px;
+      display: none;
+      flex-direction: column;
+      z-index: 1000;
+    }
+
+    .sidebar.open {
+      display: flex;
+    }
+
+    .close-btn {
+      align-self: flex-end;
+      font-size: 30px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+    }
+
+    .sidebar ul {
+      list-style: none;
+      margin-top: 50px;
+      padding: 0;
+    }
+
+    .sidebar li {
+      margin-bottom: 15px;
+    }
+
+    .sidebar a {
+      color: black;
+      font-weight: bold;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      color: #00ccff;
+    }
+
+    .logo {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      overflow: hidden;
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .page-content {
+      margin-top: 100px;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      margin: 100px 20px 40px 20px;
+    }
+
+    h2 {
+      color: white;
+      margin-bottom: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 25px;
+    }
+
+    .faq-item h3 {
+      color: #00ccff;
+      margin-bottom: 10px;
+    }
+
+    .faq-item p {
+      line-height: 1.6;
+      color: white;
+    }
+
+    @media (min-width: 768px) {
+      .sidebar {
+        width: 250px;
+        padding: 30px;
+      }
+
+      .sidebar ul {
+        margin-top: 100px;
+      }
+
+      .page-content {
+        max-width: 800px;
+        margin: 100px auto;
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Bouton menu -->
+  <button class="menu-btn" aria-label="Ouvrir le menu">
+    <img src="images/menu.png" alt="Menu" class="menu-icon">
+  </button>
+
+  <!-- Menu latéral -->
+  <aside class="sidebar" id="sidebar">
+    <button class="close-btn">&times;</button>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="about.html">À propos</a></li>
+      <li><a href="actions.html">Nos Actions</a></li>
+      <li><a href="don.html">Faire un don</a></li>
+      <li><a href="faq.html" class="active">FAQ</a></li>
+      <li><a href="media.html">Actualités &amp; Médias</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </aside>
+
+  <!-- Logo -->
+  <div class="logo">
+    <img src="images/logo.jpg" alt="Logo OPAN AFRICA">
+  </div>
+
+  <!-- Contenu principal -->
+  <div class="page-content">
+    <h2>Foire Aux Questions</h2>
+
+    <div class="faq-item">
+      <h3>Quel est l'objectif principal de OPAN AFRICA ?</h3>
+      <p>OPAN AFRICA vise à promouvoir le développement durable, la paix, le leadership des jeunes, et l’innovation sociale en Afrique, en créant des synergies entre les différentes parties prenantes.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Qui peut devenir membre de l'organisation ?</h3>
+      <p>Toute personne physique ou morale partageant les valeurs de l'organisation peut devenir membre, sous réserve d’approbation du comité exécutif. Les membres doivent s'engager activement dans les actions et les projets de l’organisation.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Comment participer aux projets de OPAN AFRICA ?</h3>
+      <p>En tant que membre ou partenaire, vous pouvez prendre part aux projets locaux, régionaux ou panafricains en vous inscrivant via les formulaires de participation disponibles sur notre site ou en nous contactant directement.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>L'association est-elle ouverte à la coopération internationale ?</h3>
+      <p>Oui, OPAN AFRICA collabore avec des organisations en Afrique et à l’étranger pour renforcer la solidarité panafricaine et développer des initiatives communes axées sur l'éducation, la santé, et la lutte contre la pauvreté.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Comment contacter l'équipe OPAN AFRICA ?</h3>
+      <p>Vous pouvez nous contacter en cliquant sur le bouton ci-dessous pour accéder à notre page de contact :</p>
+      <a href="contact.html">
+        <button style="padding: 10px 20px; background-color: #00ccff; color: white; border: none; cursor: pointer; font-size: 16px; border-radius: 5px;">
+          Aller à la page Contact
+        </button>
+      </a>
+    </div>
+
+    <div class="faq-item">
+      <h3>OPAN AFRICA propose-t-elle des opportunités de bénévolat ?</h3>
+      <p>Oui, nous offrons des opportunités de bénévolat dans plusieurs de nos projets. Si vous êtes intéressé(e), vous pouvez vous inscrire via le formulaire de bénévolat disponible sur notre site web.</p>
+    </div>
+
+    <div class="faq-item">
+      <h3>Quelles sont les prochaines initiatives de OPAN AFRICA ?</h3>
+      <p>Nous avons plusieurs projets en cours, dont des formations pour les jeunes leaders et des campagnes de sensibilisation à la préservation de l'environnement. Les informations détaillées sont disponibles dans la section "Nos Actions" du site.</p>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const menuBtn = document.querySelector('.menu-btn');
+    const sidebar = document.getElementById('sidebar');
+    const closeBtn = document.querySelector('.close-btn');
+
+    menuBtn.addEventListener('click', () => {
+      sidebar.classList.add('open');
+    });
+
+    closeBtn.addEventListener('click', () => {
+      sidebar.classList.remove('open');
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!sidebar.contains(e.target) && !menuBtn.contains(e.target)) {
+        sidebar.classList.remove('open');
+      }
+    });
+  </script>
+</body>
+</html>
